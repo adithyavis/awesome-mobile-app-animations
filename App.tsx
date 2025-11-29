@@ -1,10 +1,13 @@
 import { StyleSheet, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import StocksChartScreen from './src/Stocks/components/StocksChartScreen';
 
 export default function App() {
   return (
     <GestureHandlerRootView>
-      <View style={styles.container} />
+      <View style={styles.container}>
+        <StocksChartScreen />
+      </View>
     </GestureHandlerRootView>
   );
 }
