@@ -64,6 +64,8 @@ export const FILTER_OPTIONS = [
   },
 ];
 
+export const PADDING_HORIZONTAL = 20;
+
 export const chartConstants = {
   TOP_PADDING: 50,
   BOTTOM_PADDING: 40,

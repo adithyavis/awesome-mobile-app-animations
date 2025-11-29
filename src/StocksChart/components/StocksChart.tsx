@@ -93,6 +93,5 @@ const styles = StyleSheet.create({
   },
   canvas: {
     flex: 1,
-    marginHorizontal: PADDING_HORIZONTAL,
   },
 });
