@@ -6,14 +6,7 @@ import {
   Text,
   View,
 } from 'react-native';
-import {
-  BLUE,
-  FILTER_OPTIONS,
-  GREEN,
-  NEWS,
-  PADDING_HORIZONTAL,
-  RED,
-} from '../constants';
+import { BLUE, FILTER_OPTIONS, GREEN, NEWS, RED } from '../constants';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faEllipsis } from '@fortawesome/free-solid-svg-icons';
 import { StocksChart } from './StocksChart';
@@ -128,7 +121,6 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: 'row',
     alignItems: 'flex-end',
-    paddingHorizontal: PADDING_HORIZONTAL,
     paddingTop: 20,
   },
   headerTitle: {
@@ -148,14 +140,12 @@ const styles = StyleSheet.create({
   divider: {
     height: StyleSheet.hairlineWidth,
     backgroundColor: 'rgba(255, 255, 255, 0.5)',
-    marginHorizontal: PADDING_HORIZONTAL,
     marginTop: 15,
     marginBottom: 15,
   },
   stockInfoContainer: {
     flexDirection: 'row',
     alignItems: 'flex-end',
-    paddingHorizontal: PADDING_HORIZONTAL,
   },
   stockInfoValue: {
     fontSize: 20,
@@ -174,7 +164,6 @@ const styles = StyleSheet.create({
     zIndex: 1,
   },
   filterContainer: {
-    paddingHorizontal: PADDING_HORIZONTAL,
     paddingTop: 10,
   },
   filterButton: {
@@ -194,7 +183,6 @@ const styles = StyleSheet.create({
     height: 440,
   },
   moreDataContainer: {
-    paddingHorizontal: PADDING_HORIZONTAL,
     paddingTop: 10,
   },
   moreDataText: {

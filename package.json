@@ -1,7 +1,7 @@
 {
-  "name": "stocks-chart-example",
+  "name": "awesome-mobile-app-animations",
   "version": "1.0.0",
-  "main": "index.ts",
+  "main": "expo-router/entry",
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
@@ -16,6 +16,9 @@
     "@fortawesome/react-native-fontawesome": "^0.3.2",
     "@shopify/react-native-skia": "1.5.0",
     "expo": "~52.0.37",
+    "expo-constants": "~17.0.8",
+    "expo-linking": "~7.0.5",
+    "expo-router": "~4.0.21",
     "expo-status-bar": "~2.0.1",
     "react": "18.3.1",
     "react-native": "0.76.7",
@@ -23,6 +26,7 @@
     "react-native-reanimated": "~3.16.1",
     "react-native-reanimated-carousel": "^4.0.2",
     "react-native-safe-area-context": "4.12.0",
+    "react-native-screens": "~4.4.0",
     "react-native-svg": "15.8.0"
   },
   "devDependencies": {

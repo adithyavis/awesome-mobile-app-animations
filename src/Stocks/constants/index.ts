@@ -7,8 +7,6 @@ export const GRAY_LABELS = 'rgba(160, 160, 160, 0.9)';
 export const GRAY_GRID_LINES = 'rgba(80, 80, 80, 0.9)';
 export const GRAY_GRID_LINES_BOLD = 'rgba(80, 80, 80, 1)';
 
-export const PADDING_HORIZONTAL = 20;
-
 export const FILTER_OPTIONS = [
   {
     label: '1D',
