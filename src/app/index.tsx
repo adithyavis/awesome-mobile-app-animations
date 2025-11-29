@@ -14,7 +14,7 @@ export default function HomeScreen() {
           onPress={() => router.push('/stocks-chart')}
         >
           <Image
-            source={require('../Stocks/assets/stocks-icon.webp')}
+            source={require('../StocksChart/assets/stocks-icon.webp')}
             style={styles.buttonImage}
           />
           <Text style={styles.buttonText}>Stocks: Chart</Text>
