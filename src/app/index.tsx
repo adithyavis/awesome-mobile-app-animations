@@ -19,6 +19,16 @@ export default function HomeScreen() {
           />
           <Text style={styles.buttonText}>Stocks: Chart</Text>
         </Pressable>
+        <Pressable
+          style={styles.button}
+          onPress={() => router.push('/threads-pull-to-refresh')}
+        >
+          <Image
+            source={require('../ThreadsPullToRefresh/assets/Threads.png')}
+            style={styles.buttonImage}
+          />
+          <Text style={styles.buttonText}>Threads: Pull to Refresh</Text>
+        </Pressable>
       </View>
     </SafeAreaView>
   );
@@ -27,11 +37,11 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    width: '100%',
   },
   buttonsContainer: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    width: '100%',
+    flexDirection: 'column',
+    gap: 10,
   },
   title: {
     fontSize: 28,
@@ -47,7 +57,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   button: {
-    flex: 1,
     backgroundColor: '#05937c',
     paddingHorizontal: 20,
     paddingVertical: 12,

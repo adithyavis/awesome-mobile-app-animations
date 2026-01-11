@@ -9,6 +9,11 @@ Built using react native, with the help of
 - react-native-skia
 - and other awesome packages
 
+## DEMOS
+
+Threads Pull-to-refresh
+[![Demo Video](./assets/threads-pull-to-refresh.png)](https://github.com/adithyavis/reanimated-tab-view/blob/main/src/ThreadsPullToRefresh/assets/threads-pull-to-refresh.mp4)
+
 ## How to run
 
 1. Install dependencies
