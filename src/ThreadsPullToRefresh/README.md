@@ -8,3 +8,7 @@ The animation uses:
 
 - `react-native-reanimated` for smooth animations
 - `lottie-react-native` for custom logo animation
+
+## DEMO
+
+[![Demo Video](./assets/threads-pull-to-refresh.png)](https://github.com/adithyavis/reanimated-tab-view/blob/main/src/ThreadsPullToRefresh/assets/threads-pull-to-refresh.mp4)
