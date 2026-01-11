@@ -1,6 +1,5 @@
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { Stack } from 'expo-router';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import { StyleSheet } from 'react-native';
 
 export default function RootLayout() {
@@ -16,7 +15,14 @@ export default function RootLayout() {
           name="index"
           options={{ title: 'Home', headerShown: false }}
         />
-        <Stack.Screen name="stocks-chart" options={{ title: 'Stocks' }} />
+        <Stack.Screen
+          name="stocks-chart"
+          options={{ title: 'Stocks', headerTitleStyle: { color: 'white' } }}
+        />
+        <Stack.Screen
+          name="threads-pull-to-refresh"
+          options={{ title: 'Threads', headerTitleStyle: { color: 'white' } }}
+        />
       </Stack>
     </GestureHandlerRootView>
   );
