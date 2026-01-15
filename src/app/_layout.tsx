@@ -1,8 +1,10 @@
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { Stack } from 'expo-router';
-import { StyleSheet } from 'react-native';
+import { Image, StyleSheet, Text, View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 export default function RootLayout() {
+  const insets = useSafeAreaInsets();
   return (
     <GestureHandlerRootView style={styles.gestureHandlerRootView}>
       <Stack
@@ -25,7 +27,21 @@ export default function RootLayout() {
         />
         <Stack.Screen
           name="duolingo-drag-sort-words"
-          options={{ title: 'Duolingo', headerTitleStyle: { color: 'white' } }}
+          options={{
+            title: 'Duolingo',
+            header(props) {
+              return (
+                <View style={[styles.header, { paddingTop: insets.top }]}>
+                  <Image
+                    source={require('../DuoLingoDragSortWords/assets/duolingo-icon.png')}
+                    style={styles.headerIcon}
+                  />
+                  <Text style={styles.headerTitle}>Duolingo</Text>
+                </View>
+              );
+            },
+            headerTitleStyle: { color: 'white' },
+          }}
         />
       </Stack>
     </GestureHandlerRootView>
@@ -42,5 +58,22 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 20,
     width: '100%',
+  },
+  header: {
+    padding: 20,
+    width: '100%',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  headerTitle: {
+    color: 'white',
+    fontSize: 24,
+    fontWeight: 'bold',
+  },
+  headerIcon: {
+    width: 40,
+    height: 40,
+    marginRight: 10,
   },
 });
