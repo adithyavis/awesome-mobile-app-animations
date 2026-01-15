@@ -11,4 +11,4 @@ The animation uses:
 
 ## DEMO
 
-[![Demo Video](./assets/threads-pull-to-refresh.png)](https://github.com/adithyavis/awesome-mobile-app-animations/blob/main/src/ThreadsPullToRefresh/assets/threads-pull-to-refresh.mp4)
+[![Demo Video](./assets/threads-pull-to-refresh.png)](https://youtu.be/9Zi5wbfT-Mk)

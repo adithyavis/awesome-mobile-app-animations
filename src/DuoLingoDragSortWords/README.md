@@ -24,4 +24,4 @@ The animation uses:
 
 ## DEMO
 
-![Duolingo Drag Sort Words](./assets/duolingo-icon.png)
+[![Demo Video](./assets/duolingo-drag-sort-words.png)](https://youtu.be/-KX4BDmUdN8)
