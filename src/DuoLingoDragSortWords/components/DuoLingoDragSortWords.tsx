@@ -6,6 +6,7 @@ import Animated, {
   withSpring,
   useAnimatedReaction,
   runOnJS,
+  runOnUI,
 } from 'react-native-reanimated';
 import { DraggableWord } from './DraggableWord';
 import {
@@ -101,54 +102,6 @@ export const DuoLingoDragSortWords: React.FC = () => {
       pageY: layout.pageY ?? dropAreaLayoutRef.current.pageY ?? 0,
     };
   }, []);
-  //   if (!wordOriginalLayout) {
-  //     return { x: 0, y: 0 };
-  //   }
-
-  //   const dropAreaLayout = dropAreaLayoutRef.current;
-  //   const dropAreaWords = dropAreaWordsSV.value;
-
-  //   let currentX = WORD_HORIZONTAL_MARGIN;
-  //   let currentRow = 0;
-  //   const dropAreaWidth = dropAreaLayout.width;
-
-  //   for (let i = 0; i < dropAreaWords.length; i++) {
-  //     const precedingWordId = dropAreaWords[i];
-  //     const precedingWordLayout =
-  //       draggableWordLayoutMapRef.current.get(precedingWordId);
-  //     const precedingWordWidth = precedingWordLayout?.width ?? 0;
-  //     if (
-  //       currentX + precedingWordWidth + WORD_HORIZONTAL_MARGIN >
-  //       dropAreaWidth
-  //     ) {
-  //       currentRow++;
-  //       currentX = WORD_HORIZONTAL_MARGIN;
-  //     }
-  //     currentX += precedingWordWidth + WORD_HORIZONTAL_MARGIN;
-  //   }
-  //   if (
-  //     currentX + wordOriginalLayout.width + WORD_HORIZONTAL_MARGIN >
-  //     dropAreaWidth
-  //   ) {
-  //     currentRow++;
-  //     currentX = WORD_HORIZONTAL_MARGIN;
-  //   }
-
-  //   // Clamp to max 3 rows (0, 1, 2)
-  //   currentRow = Math.min(currentRow, 2);
-
-  //   // Calculate target position in drop area (page coordinates)
-  //   const targetPageX = dropAreaLayout.pageX + currentX;
-  //   const targetPageY =
-  //     dropAreaLayout.pageY +
-  //     currentRow * SENTENCE_ROW_HEIGHT +
-  //     (SENTENCE_ROW_HEIGHT - WORD_HEIGHT) / 2;
-
-  //   const translateX = wordOriginalLayout.pageX - targetPageX;
-  //   const translateY = wordOriginalLayout.pageY - targetPageY;
-
-  //   return { x: translateX, y: translateY };
-  // }, []);
 
   const computeDraggableWordOrderAndPositions = useCallback(
     ({
@@ -289,6 +242,33 @@ export const DuoLingoDragSortWords: React.FC = () => {
     [],
   );
 
+  const handleWordTap = useCallback((wordId: string) => {
+    const wordLayout = draggableWordLayoutMapRef.current.get(wordId);
+    if (!wordLayout) return;
+
+    const dropAreaLayout = dropAreaLayoutRef.current;
+
+    const isAlreadyInDropArea = dropAreaWordsSV.value.includes(wordId);
+    if (isAlreadyInDropArea) {
+      computeDraggableWordOrderAndPositions({
+        isDragging: false,
+        draggedWordId: wordId,
+        draggedWordTranslateY: 0,
+        draggedWordTranslateX: 0,
+      });
+    } else {
+      const translateYToDropArea =
+        wordLayout.pageY -
+        (dropAreaLayout.pageY + dropAreaLayout.height - WORD_HEIGHT);
+      computeDraggableWordOrderAndPositions({
+        isDragging: false,
+        draggedWordId: wordId,
+        draggedWordTranslateY: translateYToDropArea,
+        draggedWordTranslateX: 0,
+      });
+    }
+  }, []);
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -314,6 +294,7 @@ export const DuoLingoDragSortWords: React.FC = () => {
                 computeDraggableWordOrderAndPositions
               }
               onWordLayout={handleWordLayout}
+              onWordTap={handleWordTap}
             />
           );
         })}

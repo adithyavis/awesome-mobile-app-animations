@@ -25,6 +25,7 @@ interface DraggableWordProps {
     draggedWordTranslateX: number;
   }) => void;
   onWordLayout: (id: string, layout: Partial<Layout>) => void;
+  onWordTap: (wordId: string) => void;
 }
 
 export const DraggableWord: React.FC<DraggableWordProps> = ({
@@ -33,6 +34,7 @@ export const DraggableWord: React.FC<DraggableWordProps> = ({
   draggableWordTranslateMapSV,
   computeDraggableWordOrderAndPositions,
   onWordLayout,
+  onWordTap,
 }) => {
   const ref = useRef<View>(null);
 
@@ -43,6 +45,7 @@ export const DraggableWord: React.FC<DraggableWordProps> = ({
   const isTranslatingAfterDragStartSV = useSharedValue(false);
   const preTranslateXSV = useSharedValue(0);
   const preTranslateYSV = useSharedValue(0);
+  const isPressedSV = useSharedValue(false);
 
   useAnimatedReaction(
     () => ({
@@ -54,12 +57,24 @@ export const DraggableWord: React.FC<DraggableWordProps> = ({
         isTranslatingAfterDragStartSV.value = true;
       }
       if (!isDragging) {
-        translateXSV.value = withSpring(translate.x, undefined, () => {
-          isTranslatingAfterDragStartSV.value = false;
-        });
-        translateYSV.value = withSpring(translate.y, undefined, () => {
-          isTranslatingAfterDragStartSV.value = false;
-        });
+        translateXSV.value = withSpring(
+          translate.x,
+          {
+            damping: 10,
+          },
+          () => {
+            isTranslatingAfterDragStartSV.value = false;
+          },
+        );
+        translateYSV.value = withSpring(
+          translate.y,
+          {
+            damping: 10,
+          },
+          () => {
+            isTranslatingAfterDragStartSV.value = false;
+          },
+        );
       }
     },
   );
@@ -90,12 +105,26 @@ export const DraggableWord: React.FC<DraggableWordProps> = ({
       });
     });
 
+  const tapGesture = Gesture.Tap()
+    .onBegin(() => {
+      isPressedSV.value = true;
+    })
+    .onFinalize(() => {
+      isPressedSV.value = false;
+    })
+    .onEnd(() => {
+      runOnJS(onWordTap)(id);
+    });
+
+  const composedGesture = Gesture.Race(tapGesture, panGesture);
+
   const animatedStyle = useAnimatedStyle(() => {
+    const scale = isDraggingSV.value ? 1.1 : isPressedSV.value ? 0.95 : 1;
     return {
       transform: [
         { translateX: -translateXSV.value },
         { translateY: -translateYSV.value },
-        { scale: withSpring(isDraggingSV.value ? 1.1 : 1) },
+        { scale: withSpring(scale) },
       ],
       zIndex: isTranslatingAfterDragStartSV.value ? 1000 : 1,
     };
@@ -116,7 +145,7 @@ export const DraggableWord: React.FC<DraggableWordProps> = ({
 
   return (
     <View ref={ref}>
-      <GestureDetector gesture={panGesture}>
+      <GestureDetector gesture={composedGesture}>
         <Animated.View style={[styles.wordContainer, animatedStyle]}>
           <Text style={styles.wordText}>{text}</Text>
         </Animated.View>
