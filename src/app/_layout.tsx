@@ -1,6 +1,6 @@
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { Stack } from 'expo-router';
-import { StyleSheet } from 'react-native';
+import { Image, StyleSheet, Text, View } from 'react-native';
 
 export default function RootLayout() {
   return (
@@ -23,6 +23,24 @@ export default function RootLayout() {
           name="threads-pull-to-refresh"
           options={{ title: 'Threads', headerTitleStyle: { color: 'white' } }}
         />
+        <Stack.Screen
+          name="duolingo-drag-sort-words"
+          options={{
+            title: 'Duolingo',
+            headerTitle() {
+              return (
+                <View style={[styles.header]}>
+                  <Image
+                    source={require('../DuoLingoDragSortWords/assets/duolingo-icon.png')}
+                    style={styles.headerIcon}
+                  />
+                  <Text style={styles.headerTitle}>Duolingo</Text>
+                </View>
+              );
+            },
+            headerTitleStyle: { color: 'white' },
+          }}
+        />
       </Stack>
     </GestureHandlerRootView>
   );
@@ -38,5 +56,20 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 20,
     width: '100%',
+  },
+  header: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  headerTitle: {
+    color: 'white',
+    fontSize: 24,
+    fontWeight: 'bold',
+  },
+  headerIcon: {
+    width: 40,
+    height: 40,
+    marginRight: 10,
   },
 });

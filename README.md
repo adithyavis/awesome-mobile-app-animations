@@ -9,10 +9,16 @@ Built using react native, with the help of
 - react-native-skia
 - and other awesome packages
 
-## DEMOS
+## DEMOS- Click on each preview image to view video
+
+Duolingo drag sort words
+[![Demo Video](./src/DuoLingoDragSortWords/assets/duolingo-drag-sort-words.png)](https://youtu.be/-KX4BDmUdN8)
 
 Threads Pull-to-refresh
-[![Demo Video](./src/ThreadsPullToRefresh/assets/threads-pull-to-refresh.png)](https://github.com/adithyavis/awesome-mobile-app-animations/blob/main/src/ThreadsPullToRefresh/assets/threads-pull-to-refresh.mp4)
+[![Demo Video](./src/ThreadsPullToRefresh/assets/threads-pull-to-refresh.png)](https://youtu.be/9Zi5wbfT-Mk)
+
+Stocks Chart
+[![Demo Video](./src/StocksChart/assets/stocks.png)](https://youtu.be/KC_Z-5sVTAU)
 
 ## How to run
 
