@@ -23,6 +23,10 @@ export default function RootLayout() {
           name="threads-pull-to-refresh"
           options={{ title: 'Threads', headerTitleStyle: { color: 'white' } }}
         />
+        <Stack.Screen
+          name="duolingo-drag-sort-words"
+          options={{ title: 'Duolingo', headerTitleStyle: { color: 'white' } }}
+        />
       </Stack>
     </GestureHandlerRootView>
   );

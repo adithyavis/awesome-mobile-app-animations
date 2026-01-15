@@ -29,6 +29,15 @@ export default function HomeScreen() {
           />
           <Text style={styles.buttonText}>Threads: Pull to Refresh</Text>
         </Pressable>
+        <Pressable
+          style={styles.button}
+          onPress={() => router.push('/duolingo-drag-sort-words')}
+        >
+          <View style={styles.duolingoIcon}>
+            <Text style={styles.duolingoIconText}>DUO</Text>
+          </View>
+          <Text style={styles.buttonText}>Duolingo: Drag Sort Words</Text>
+        </Pressable>
       </View>
     </SafeAreaView>
   );
@@ -73,5 +82,19 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
     marginRight: 10,
+  },
+  duolingoIcon: {
+    width: 40,
+    height: 40,
+    marginRight: 10,
+    backgroundColor: '#58CC02',
+    borderRadius: 8,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  duolingoIconText: {
+    color: 'white',
+    fontSize: 12,
+    fontWeight: '700',
   },
 });
