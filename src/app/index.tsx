@@ -33,9 +33,10 @@ export default function HomeScreen() {
           style={styles.button}
           onPress={() => router.push('/duolingo-drag-sort-words')}
         >
-          <View style={styles.duolingoIcon}>
-            <Text style={styles.duolingoIconText}>DUO</Text>
-          </View>
+          <Image
+            source={require('../DuoLingoDragSortWords/assets/duolingo-icon.png')}
+            style={styles.buttonImage}
+          />
           <Text style={styles.buttonText}>Duolingo: Drag Sort Words</Text>
         </Pressable>
       </View>
