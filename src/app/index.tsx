@@ -49,6 +49,16 @@ export default function HomeScreen() {
           />
           <Text style={styles.buttonText}>Duolingo: Drag Sort Words</Text>
         </Pressable>
+        <Pressable
+          style={styles.button}
+          onPress={() => router.push('/youtube-music-swipe-bg-transition')}
+        >
+          <Image
+            source={require('../YoutubeMusicSwipeBgTransition/assets/youtube-music-logo.png')}
+            style={styles.buttonImage}
+          />
+          <Text style={styles.buttonText}>YTMusic: Swipe Bg Transition</Text>
+        </Pressable>
       </View>
     </SafeAreaView>
   );

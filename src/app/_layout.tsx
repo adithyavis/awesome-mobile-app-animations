@@ -68,6 +68,24 @@ export default function RootLayout() {
             contentStyle: { padding: 0 },
           }}
         />
+        <Stack.Screen
+          name="youtube-music-swipe-bg-transition"
+          options={{
+            title: 'Youtube Music',
+            headerTitle() {
+              return (
+                <View style={[styles.header]}>
+                  <Image
+                    source={require('../YoutubeMusicSwipeBgTransition/assets/youtube-music-logo.png')}
+                    style={styles.headerIcon}
+                  />
+                  <Text style={styles.headerTitle}>Youtube Music</Text>
+                </View>
+              );
+            },
+            contentStyle: { padding: 0 },
+          }}
+        />
       </Stack>
     </GestureHandlerRootView>
   );
