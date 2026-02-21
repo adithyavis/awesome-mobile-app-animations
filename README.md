@@ -23,6 +23,9 @@ Threads Pull-to-refresh
 Stocks Chart
 [![Demo Video](./src/StocksChart/assets/stocks.png)](https://youtu.be/KC_Z-5sVTAU)
 
+Youtube Music: Swipe Bg Transition
+[![Demo Video](./src/YoutubeMusicSwipeBgTransition/assets/youtube-music-swipe-bg-transition.png)](https://www.youtube.com/watch?v=u8-dyjjUIio)
+
 ## How to run
 
 1. Install dependencies
