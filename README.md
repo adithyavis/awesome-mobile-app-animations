@@ -9,16 +9,19 @@ Built using react native, with the help of
 - react-native-skia
 - and other awesome packages
 
-## DEMOS- Click on each preview image to view video
+## Code
 
-Duolingo drag sort words
-[![Demo Video](./src/DuoLingoDragSortWords/assets/duolingo-drag-sort-words.png)](https://youtu.be/-KX4BDmUdN8)
+Code for all the examples are available inside the `/src` folder
 
-Threads Pull-to-refresh
-[![Demo Video](./src/ThreadsPullToRefresh/assets/threads-pull-to-refresh.png)](https://youtu.be/9Zi5wbfT-Mk)
+## DEMOS
 
-Stocks Chart
-[![Demo Video](./src/StocksChart/assets/stocks.png)](https://youtu.be/KC_Z-5sVTAU)
+| App                                       | Preview                                                                                                    | Video                                                  | Code                                          |
+| ----------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ------------------------------------------------------ | --------------------------------------------- |
+| **Wolt** — Frost creep like image loading | <img src="./src/WoltShopLoading/assets/wolt-shop-loading-placeholder.png" width="300" />                   | [YouTube](https://youtu.be/cZBs7ur75Dk)                | [Source](./src/WoltShopLoading)               |
+| **Duolingo** — Drag sort words            | <img src="./src/DuoLingoDragSortWords/assets/duolingo-drag-sort-words.png" width="300" />                  | [YouTube](https://youtu.be/-KX4BDmUdN8)                | [Source](./src/DuoLingoDragSortWords)         |
+| **Threads** — Pull-to-refresh             | <img src="./src/ThreadsPullToRefresh/assets/threads-pull-to-refresh.png" width="300" />                    | [YouTube](https://youtu.be/9Zi5wbfT-Mk)                | [Source](./src/ThreadsPullToRefresh)          |
+| **Stocks** — Chart animation              | <img src="./src/StocksChart/assets/stocks.png" width="300" />                                              | [YouTube](https://youtu.be/KC_Z-5sVTAU)                | [Source](./src/StocksChart)                   |
+| **Youtube Music** — Swipe Bg Transition   | <img src="./src/YoutubeMusicSwipeBgTransition/assets/youtube-music-swipe-bg-transition.png" width="300" /> | [YouTube](https://www.youtube.com/watch?v=u8-dyjjUIio) | [Source](./src/YoutubeMusicSwipeBgTransition) |
 
 ## How to run
 
