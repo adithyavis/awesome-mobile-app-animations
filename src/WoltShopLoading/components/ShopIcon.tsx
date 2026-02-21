@@ -16,9 +16,7 @@ interface ShopIconProps {
 }
 
 export const ShopIcon = React.memo(({ iconReveal }: ShopIconProps) => {
-  const placeholderStyle = useAnimatedStyle(() => ({
-    opacity: 1 - iconReveal.value,
-  }));
+  const placeholderStyle = useAnimatedStyle(() => ({}));
 
   const loadedStyle = useAnimatedStyle(() => ({
     opacity: iconReveal.value,
@@ -59,6 +57,11 @@ const styles = StyleSheet.create({
     width: ICON_SIZE,
     height: ICON_SIZE,
     position: 'absolute',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.7,
+    shadowRadius: 15,
+    elevation: 12,
   },
   iconImage: {
     width: ICON_SIZE,
