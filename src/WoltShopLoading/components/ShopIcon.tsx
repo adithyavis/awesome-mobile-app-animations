@@ -20,9 +20,6 @@ export const ShopIcon = React.memo(({ iconReveal }: ShopIconProps) => {
 
   const loadedStyle = useAnimatedStyle(() => ({
     opacity: iconReveal.value,
-    transform: [
-      { scale: interpolate(iconReveal.value, [0, 0.5, 1], [0.85, 1.05, 1]) },
-    ],
   }));
 
   return (

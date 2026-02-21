@@ -9,7 +9,7 @@ import Animated, {
   Easing,
   interpolate,
 } from 'react-native-reanimated';
-import { MetaballBannerReveal } from './MetaballBannerReveal';
+import { AntiFrostCreepReveal } from './AntiFrostCreepReveal';
 import { ShopIcon } from './ShopIcon';
 import { COLORS, TIMING } from '../constants';
 
@@ -119,7 +119,7 @@ export default function WoltShopLoadingScreen() {
   return (
     <SafeAreaView style={styles.safeArea} edges={['bottom']}>
       <View style={styles.container}>
-        <MetaballBannerReveal revealProgress={revealProgress} />
+        <AntiFrostCreepReveal revealProgress={revealProgress} />
         <ShopIcon iconReveal={iconReveal} />
         <View style={styles.infoContainer}>
           <Animated.View style={nameStyle}>
