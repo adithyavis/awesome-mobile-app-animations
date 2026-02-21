@@ -11,6 +11,9 @@ Built using react native, with the help of
 
 ## DEMOS- Click on each preview image to view video
 
+Wolt: Frost creep like image loading
+[![Demo Video](./src/WoltShopLoading/assets/wolt-shop-loading-placeholder.png)](https://youtu.be/cZBs7ur75Dk)
+
 Duolingo drag sort words
 [![Demo Video](./src/DuoLingoDragSortWords/assets/duolingo-drag-sort-words.png)](https://youtu.be/-KX4BDmUdN8)
 
