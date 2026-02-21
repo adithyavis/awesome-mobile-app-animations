@@ -11,6 +11,16 @@ export default function HomeScreen() {
       <View style={styles.buttonsContainer}>
         <Pressable
           style={styles.button}
+          onPress={() => router.push('/wolt-shop-loading')}
+        >
+          <Image
+            source={require('../WoltShopLoading/assets/wolt-shop-loading.png')}
+            style={styles.buttonImage}
+          />
+          <Text style={styles.buttonText}>Wolt: Shop Image Loading</Text>
+        </Pressable>
+        <Pressable
+          style={styles.button}
           onPress={() => router.push('/stocks-chart')}
         >
           <Image
@@ -96,6 +106,20 @@ const styles = StyleSheet.create({
   duolingoIconText: {
     color: 'white',
     fontSize: 12,
+    fontWeight: '700',
+  },
+  woltIcon: {
+    width: 40,
+    height: 40,
+    marginRight: 10,
+    backgroundColor: '#009de0',
+    borderRadius: 8,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  woltIconText: {
+    color: 'white',
+    fontSize: 18,
     fontWeight: '700',
   },
 });

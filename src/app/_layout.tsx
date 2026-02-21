@@ -13,15 +13,24 @@ export default function RootLayout() {
       >
         <Stack.Screen
           name="index"
-          options={{ title: 'Home', headerShown: false }}
+          options={{
+            title: 'Home',
+            headerShown: false,
+          }}
         />
         <Stack.Screen
           name="stocks-chart"
-          options={{ title: 'Stocks', headerTitleStyle: { color: 'white' } }}
+          options={{
+            title: 'Stocks',
+            headerTitleStyle: { color: 'white' },
+          }}
         />
         <Stack.Screen
           name="threads-pull-to-refresh"
-          options={{ title: 'Threads', headerTitleStyle: { color: 'white' } }}
+          options={{
+            title: 'Threads',
+            headerTitleStyle: { color: 'white' },
+          }}
         />
         <Stack.Screen
           name="duolingo-drag-sort-words"
@@ -39,6 +48,24 @@ export default function RootLayout() {
               );
             },
             headerTitleStyle: { color: 'white' },
+          }}
+        />
+        <Stack.Screen
+          name="wolt-shop-loading"
+          options={{
+            title: 'Wolt',
+            headerTitle() {
+              return (
+                <View style={[styles.header]}>
+                  <Image
+                    source={require('../WoltShopLoading/assets/wolt-shop-loading.png')}
+                    style={styles.headerIcon}
+                  />
+                  <Text style={styles.headerTitle}>Wolt</Text>
+                </View>
+              );
+            },
+            contentStyle: { padding: 0 },
           }}
         />
       </Stack>
