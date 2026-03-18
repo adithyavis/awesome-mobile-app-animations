@@ -9,6 +9,15 @@ import styles from './index.module.css';
 
 const animations = [
   {
+    app: 'Threads',
+    title: 'Spoiler Masking',
+    description:
+      'Animated particle mask over spoiler text using a Skia RuntimeEffect shader with tap-to-reveal.',
+    tech: ['reanimated', 'skia'],
+    docLink: '/docs/animations/threads-spoiler-masking',
+    youtubeId: '30qn0e2zHNo',
+  },
+  {
     app: 'Wolt',
     title: 'Frost Creep Image Loading',
     description:
@@ -133,7 +142,7 @@ export default function Home(): ReactNode {
           <div className="container">
             <div className="row">
               {animations.map((anim) => (
-                <AnimationCard key={anim.app} {...anim} />
+                <AnimationCard key={anim.docLink} {...anim} />
               ))}
             </div>
           </div>
