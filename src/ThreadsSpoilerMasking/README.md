@@ -17,8 +17,6 @@ The animation uses:
 - `react-native-reanimated` shared values to drive the shader's time uniform
 - A custom GLSL fragment shader that generates 70 particles with deterministic pseudo-random properties
 
-## Key Components
+## DEMO
 
-- `MaskedText` - Core component: measures text, overlays a Skia Canvas with the particle shader
-- `SpoilerPost` - Post component with optional spoiler content
-- `ThreadsSpoilerFeed` - FlatList feed rendering posts with spoiler masking
+[![Demo Video](./assets/threads-spoiler-masking.png)](https://youtu.be/30qn0e2zHNo)

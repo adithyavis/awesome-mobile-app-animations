@@ -29,11 +29,9 @@ export const SpoilerPost: React.FC<SpoilerPostProps> = ({
         <Text style={styles.content}>{content}</Text>
         {spoilerContent && (
           <View style={styles.spoilerContainer}>
-            {spoilerContent.split('\n').map((line, index) => (
-              <MaskedText key={index} style={styles.spoilerText}>
-                {line}
-              </MaskedText>
-            ))}
+            <MaskedText style={styles.spoilerText}>
+              {spoilerContent}
+            </MaskedText>
           </View>
         )}
       </View>
