@@ -33,6 +33,13 @@ export default function RootLayout() {
           }}
         />
         <Stack.Screen
+          name="threads-spoiler-masking"
+          options={{
+            title: 'Threads Spoiler',
+            headerTitleStyle: { color: 'white' },
+          }}
+        />
+        <Stack.Screen
           name="duolingo-drag-sort-words"
           options={{
             title: 'Duolingo',

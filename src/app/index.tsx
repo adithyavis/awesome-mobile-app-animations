@@ -11,6 +11,16 @@ export default function HomeScreen() {
       <View style={styles.buttonsContainer}>
         <Pressable
           style={styles.button}
+          onPress={() => router.push('/threads-spoiler-masking')}
+        >
+          <Image
+            source={require('../ThreadsSpoilerMasking/assets/Threads.png')}
+            style={styles.buttonImage}
+          />
+          <Text style={styles.buttonText}>Threads: Spoiler Masking</Text>
+        </Pressable>
+        <Pressable
+          style={styles.button}
           onPress={() => router.push('/wolt-shop-loading')}
         >
           <Image
