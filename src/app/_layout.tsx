@@ -76,6 +76,14 @@ export default function RootLayout() {
           }}
         />
         <Stack.Screen
+          name="chatgpt-voice-profiles"
+          options={{
+            title: 'ChatGPT',
+            headerTitleStyle: { color: 'white' },
+            contentStyle: { padding: 0 },
+          }}
+        />
+        <Stack.Screen
           name="youtube-music-swipe-bg-transition"
           options={{
             title: 'Youtube Music',
