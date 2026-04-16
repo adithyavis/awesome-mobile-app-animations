@@ -112,8 +112,8 @@ const orbShaderSource = Skia.RuntimeEffect.Make(`
     // Gentle vertical bias — white tends toward upper half
     n += (1.0 - uv.y) * 0.06;
 
-    // Remap to full range
-    float val = smoothstep(0.32, 0.68, n);
+    // Remap: wider range prevents full-white or full-blue saturation
+    float val = smoothstep(0.25, 0.75, n);
 
     // --- Color: deep blue -> cyan -> white ---
     float3 deepBlue = uColorA;
