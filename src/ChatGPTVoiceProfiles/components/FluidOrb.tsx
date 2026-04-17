@@ -85,7 +85,8 @@ const orbShaderSource = Skia.RuntimeEffect.Make(`
 
     // Boost adds extra speed and warp range, decays after carousel swipe
     // Additive so the effect is constant regardless of elapsed time
-    float t = uTime * 2.0 + uBoost * 3.0;
+    float t = uTime * 2.0 + uBoost * 10.0;
+    float t2 = uTime * 2.0 + uBoost * 10.0;
     float warpMul = 1.0 + uBoost * 0.5;
 
     // --- Step 1: Large-scale advection field ---
@@ -102,15 +103,15 @@ const orbShaderSource = Skia.RuntimeEffect.Make(`
     // Very low frequency noise at warped position = big soft blobs
     float shape = fbm3(wuv * 0.6 + float2(t * 0.08, -t * 0.05));
 
-    // Second shape layer, slightly different drift
-    float shape2 = fbm3(wuv * 0.7 + float2(-t * 0.06, t * 0.1) + 3.1);
+    // Second shape layer — different scale and large offset to decorrelate
+    float shape2 = fbm3(wuv * 0.45 + float2(-t * 0.1, t * 0.07) + 11.4);
 
     // Blend: creates the large connected white/blue masses
-    float n = shape * 0.6 + shape2 * 0.4;
+    float n = shape * 0.55 + shape2 * 0.45;
 
     // --- Step 2b: Sparse, fast, high-warp overlay ---
     // Very low density (tiny scale), moves fast, warps a lot
-    float fastT = t * 3.0;
+    float fastT = t2 * 3.0;
     float2 fastFlow = float2(
       fbm3(uv * 0.3 + float2(fastT * 0.5, fastT * 0.2)),
       fbm3(uv * 0.3 + float2(-fastT * 0.3, fastT * 0.4) + 9.1)
@@ -129,8 +130,8 @@ const orbShaderSource = Skia.RuntimeEffect.Make(`
     boundary = clamp(boundary, 0.0, 1.0);
     n = n + (detail - 0.5) * 0.15 * boundary;
 
-    // Gentle vertical bias — white tends toward upper half
-    n += (1.0 - uv.y) * 0.06;
+    // Very subtle vertical bias
+    n += (1.0 - uv.y) * 0.025;
 
     // Remap: wider range prevents full-white or full-blue saturation
     float val = smoothstep(0.25, 0.75, n);
@@ -167,24 +168,20 @@ const FluidOrb: React.FC<FluidOrbProps> = ({ settleKey = 0 }) => {
   const breatheScale = useSharedValue(1);
 
   useEffect(() => {
-    if (settleKey > 0) {
-      boost.value = withSequence(
-        withTiming(1, {
+    cancelAnimation(boost);
+    boost.value = withSequence(
+      withTiming(1, {
+        duration: 1000,
+        easing: Easing.out(Easing.cubic),
+      }),
+      withDelay(
+        5000,
+        withTiming(0, {
           duration: 1000,
           easing: Easing.out(Easing.cubic),
         }),
-        withDelay(
-          5000,
-          withTiming(0, {
-            duration: 1000,
-            easing: Easing.out(Easing.cubic),
-          }),
-        ),
-      );
-    } else {
-      cancelAnimation(boost);
-      boost.value = 0;
-    }
+      ),
+    );
   }, [settleKey]);
 
   // Drive shader time via rAF
