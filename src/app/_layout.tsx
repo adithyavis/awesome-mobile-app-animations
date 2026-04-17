@@ -79,7 +79,19 @@ export default function RootLayout() {
           name="chatgpt-voice-profiles"
           options={{
             title: 'ChatGPT',
-            headerTitleStyle: { color: 'white' },
+            headerTitle() {
+              return (
+                <View style={[styles.header]}>
+                  <View style={styles.chatgptLogoContainer}>
+                    <Image
+                      source={require('../ChatGPTVoiceProfiles/assets/ChatGPT_logo.png')}
+                      style={{ width: 28, height: 28 }}
+                    />
+                  </View>
+                  <Text style={styles.headerTitle}>ChatGPT</Text>
+                </View>
+              );
+            },
             contentStyle: { padding: 0 },
           }}
         />
@@ -126,6 +138,18 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 24,
     fontWeight: 'bold',
+  },
+  chatgptLogoContainer: {
+    width: 36,
+    height: 36,
+    marginRight: 10,
+    backgroundColor: '#fff',
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: 'rgba(255, 255, 255, 0.3)',
+    justifyContent: 'center',
+    alignItems: 'center',
+    overflow: 'hidden',
   },
   headerIcon: {
     width: 40,

@@ -14,7 +14,10 @@ export default function HomeScreen() {
           onPress={() => router.push('/chatgpt-voice-profiles')}
         >
           <View style={styles.chatgptIcon}>
-            <Text style={styles.chatgptIconText}>G</Text>
+            <Image
+              source={require('../ChatGPTVoiceProfiles/assets/ChatGPT_logo.png')}
+              style={{ width: 28, height: 28 }}
+            />
           </View>
           <Text style={styles.buttonText}>ChatGPT: Voice Profiles</Text>
         </Pressable>
@@ -155,10 +158,13 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
     marginRight: 10,
-    backgroundColor: '#10a37f',
+    backgroundColor: '#fff',
     borderRadius: 8,
+    borderWidth: 1,
+    borderColor: 'rgba(255, 255, 255, 0.3)',
     justifyContent: 'center',
     alignItems: 'center',
+    overflow: 'hidden',
   },
   chatgptIconText: {
     color: 'white',
