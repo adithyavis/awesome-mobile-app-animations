@@ -15,12 +15,14 @@ const { width: SCREEN_WIDTH } = Dimensions.get('window');
 
 const ChatGPTVoiceProfilesScreen: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [settleKey, setSettleKey] = useState(0);
   const flatListRef = useRef<FlatList>(null);
 
   const onViewableItemsChanged = useRef(
     ({ viewableItems }: { viewableItems: ViewToken[] }) => {
       if (viewableItems.length > 0 && viewableItems[0].index != null) {
         setActiveIndex(viewableItems[0].index);
+        setSettleKey((prev) => prev + 1);
       }
     },
   ).current;
@@ -34,10 +36,10 @@ const ChatGPTVoiceProfilesScreen: React.FC = () => {
   const renderItem = useCallback(
     () => (
       <View style={styles.orbPage}>
-        <FluidOrb />
+        <FluidOrb settleKey={settleKey} />
       </View>
     ),
-    [],
+    [settleKey],
   );
 
   const keyExtractor = useCallback((item: any) => item.name, []);

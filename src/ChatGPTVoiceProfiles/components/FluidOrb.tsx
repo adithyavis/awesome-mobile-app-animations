@@ -11,6 +11,7 @@ import Animated, {
   useSharedValue,
   useAnimatedStyle,
   withRepeat,
+  withSequence,
   withTiming,
   Easing,
 } from 'react-native-reanimated';
@@ -20,13 +21,14 @@ const RADIUS = ORB_SIZE / 2;
 const CENTER = ORB_SIZE / 2;
 
 // Floating motion
-const FLOAT_DISTANCE = 5;
+const FLOAT_DISTANCE = 10;
 const FLOAT_DURATION = 3000;
-const BREATHE_SCALE = 0.025;
+const BREATHE_SCALE = 0.05;
 const BREATHE_DURATION = 4000;
 
 const orbShaderSource = Skia.RuntimeEffect.Make(`
   uniform float uTime;
+  uniform float uBoost;
   uniform float2 uResolution;
   uniform float3 uColorA;
   uniform float3 uColorB;
@@ -79,7 +81,10 @@ const orbShaderSource = Skia.RuntimeEffect.Make(`
     float2 uv = fragCoord / uResolution;
     uv = uv * 2.0 - 1.0;
 
-    float t = uTime * 2;
+    // Boost increases speed and warp range, decays after carousel swipe
+    float speedMul = 1.0 + uBoost * 0.75;
+    float warpMul = 1.0 + uBoost * 0.5;
+    float t = uTime * 2.0 * speedMul;
 
     // --- Step 1: Large-scale advection field ---
     // Very low frequency — creates the slow, massive drift
@@ -88,8 +93,8 @@ const orbShaderSource = Skia.RuntimeEffect.Make(`
       fbm3(uv * 0.5 + float2(-t * 0.15, t * 0.25) + 5.3)
     );
 
-    // Warp UV by the flow field
-    float2 wuv = uv + (flow - 0.5) * 0.9;
+    // Warp UV by the flow field (range boosted on swipe)
+    float2 wuv = uv + (flow - 0.5) * 0.9 * warpMul;
 
     // --- Step 2: Main fluid shape ---
     // Very low frequency noise at warped position = big soft blobs
@@ -136,10 +141,30 @@ const orbShaderSource = Skia.RuntimeEffect.Make(`
   }
 `)!;
 
-const FluidOrb: React.FC = () => {
+interface FluidOrbProps {
+  settleKey?: number;
+}
+
+const FluidOrb: React.FC<FluidOrbProps> = ({ settleKey = 0 }) => {
   const time = useSharedValue(0);
+  const boost = useSharedValue(0);
   const floatY = useSharedValue(0);
   const breatheScale = useSharedValue(1);
+
+  useEffect(() => {
+    if (settleKey > 0) {
+      boost.value = withSequence(
+        withTiming(1, {
+          duration: 1000,
+          easing: Easing.out(Easing.cubic),
+        }),
+        withTiming(0, {
+          duration: 3000,
+          easing: Easing.out(Easing.cubic),
+        }),
+      );
+    }
+  }, [settleKey]);
 
   // Drive shader time via rAF
   useEffect(() => {
@@ -184,6 +209,7 @@ const FluidOrb: React.FC = () => {
 
   const uniforms = useDerivedValue(() => ({
     uTime: time.value,
+    uBoost: boost.value,
     uResolution: [ORB_SIZE, ORB_SIZE],
     uColorA: ORB_COLORS.colorA,
     uColorB: ORB_COLORS.colorB,
