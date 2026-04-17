@@ -169,18 +169,19 @@ const FluidOrb: React.FC<FluidOrbProps> = ({ settleKey = 0 }) => {
 
   useEffect(() => {
     cancelAnimation(boost);
+    boost.value = 0;
     boost.value = withSequence(
-      withTiming(1, {
-        duration: 1000,
-        easing: Easing.out(Easing.cubic),
-      }),
       withDelay(
-        5000,
-        withTiming(0, {
-          duration: 1000,
-          easing: Easing.out(Easing.cubic),
+        1000,
+        withTiming(2, {
+          duration: 6000,
+          easing: Easing.linear,
         }),
       ),
+      withTiming(0, {
+        duration: 1000,
+        easing: Easing.linear,
+      }),
     );
   }, [settleKey]);
 
