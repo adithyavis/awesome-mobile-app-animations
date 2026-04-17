@@ -7,6 +7,8 @@ import {
   Skia,
 } from '@shopify/react-native-skia';
 import Animated, {
+  cancelAnimation,
+  withDelay,
   useDerivedValue,
   useSharedValue,
   useAnimatedStyle,
@@ -81,10 +83,10 @@ const orbShaderSource = Skia.RuntimeEffect.Make(`
     float2 uv = fragCoord / uResolution;
     uv = uv * 2.0 - 1.0;
 
-    // Boost increases speed and warp range, decays after carousel swipe
-    float speedMul = 1.0 + uBoost * 0.75;
+    // Boost adds extra speed and warp range, decays after carousel swipe
+    // Additive so the effect is constant regardless of elapsed time
+    float t = uTime * 2.0 + uBoost * 3.0;
     float warpMul = 1.0 + uBoost * 0.5;
-    float t = uTime * 2.0 * speedMul;
 
     // --- Step 1: Large-scale advection field ---
     // Very low frequency — creates the slow, massive drift
@@ -105,6 +107,19 @@ const orbShaderSource = Skia.RuntimeEffect.Make(`
 
     // Blend: creates the large connected white/blue masses
     float n = shape * 0.6 + shape2 * 0.4;
+
+    // --- Step 2b: Sparse, fast, high-warp overlay ---
+    // Very low density (tiny scale), moves fast, warps a lot
+    float fastT = t * 3.0;
+    float2 fastFlow = float2(
+      fbm3(uv * 0.3 + float2(fastT * 0.5, fastT * 0.2)),
+      fbm3(uv * 0.3 + float2(-fastT * 0.3, fastT * 0.4) + 9.1)
+    );
+    float2 fastWuv = uv + (fastFlow - 0.5) * 1.8 * warpMul;
+    float sparse = fbm3(fastWuv * 0.3 + float2(fastT * 0.15, -fastT * 0.1) + 7.7);
+    // Only let the bright peaks through — very sparse contribution
+    float sparseContrib = smoothstep(0.65, 0.8, sparse) * 0.12;
+    n = n + sparseContrib;
 
     // --- Step 3: Soft detail on top ---
     // Higher frequency detail only in the transition zone
@@ -158,11 +173,17 @@ const FluidOrb: React.FC<FluidOrbProps> = ({ settleKey = 0 }) => {
           duration: 1000,
           easing: Easing.out(Easing.cubic),
         }),
-        withTiming(0, {
-          duration: 3000,
-          easing: Easing.out(Easing.cubic),
-        }),
+        withDelay(
+          5000,
+          withTiming(0, {
+            duration: 1000,
+            easing: Easing.out(Easing.cubic),
+          }),
+        ),
       );
+    } else {
+      cancelAnimation(boost);
+      boost.value = 0;
     }
   }, [settleKey]);
 
