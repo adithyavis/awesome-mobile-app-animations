@@ -11,6 +11,18 @@ export default function HomeScreen() {
       <View style={styles.buttonsContainer}>
         <Pressable
           style={styles.button}
+          onPress={() => router.push('/chatgpt-voice-profiles')}
+        >
+          <View style={styles.chatgptIcon}>
+            <Image
+              source={require('../ChatGPTVoiceProfiles/assets/ChatGPT_logo.png')}
+              style={{ width: 28, height: 28 }}
+            />
+          </View>
+          <Text style={styles.buttonText}>ChatGPT: Voice Profiles</Text>
+        </Pressable>
+        <Pressable
+          style={styles.button}
           onPress={() => router.push('/threads-spoiler-masking')}
         >
           <Image
@@ -138,6 +150,23 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   woltIconText: {
+    color: 'white',
+    fontSize: 18,
+    fontWeight: '700',
+  },
+  chatgptIcon: {
+    width: 40,
+    height: 40,
+    marginRight: 10,
+    backgroundColor: '#fff',
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: 'rgba(255, 255, 255, 0.3)',
+    justifyContent: 'center',
+    alignItems: 'center',
+    overflow: 'hidden',
+  },
+  chatgptIconText: {
     color: 'white',
     fontSize: 18,
     fontWeight: '700',

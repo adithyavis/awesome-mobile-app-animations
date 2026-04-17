@@ -9,6 +9,15 @@ import styles from './index.module.css';
 
 const animations = [
   {
+    app: 'ChatGPT',
+    title: 'Voice Profiles Fluid Orb',
+    description:
+      'GPU-rendered fluid orb with FBM noise advection, swipe boost, and floating animation.',
+    tech: ['skia', 'reanimated'],
+    docLink: '/docs/animations/chatgpt-voice-profiles',
+    youtubeId: 'wbfCDYvMx4U',
+  },
+  {
     app: 'Threads',
     title: 'Spoiler Masking',
     description:
