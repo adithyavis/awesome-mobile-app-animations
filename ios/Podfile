@@ -60,5 +60,17 @@ target 'awesomemobileappanimations' do
         end
       end
     end
+
+    # Xcode 26 / iOS 26 SDK: fmt's `consteval` FMT_STRING path fails to compile
+    # ("call to consteval function ... is not a constant expression"). fmt's
+    # base.h unconditionally enables FMT_USE_CONSTEVAL from compiler detection,
+    # but disables it when the C++ standard is < 201709L. Building only the fmt
+    # pod at c++17 turns consteval off there (fmt supports c++11+).
+    installer.pods_project.targets.each do |target|
+      next unless target.name == 'fmt'
+      target.build_configurations.each do |config|
+        config.build_settings['CLANG_CXX_LANGUAGE_STANDARD'] = 'c++17'
+      end
+    end
   end
 end

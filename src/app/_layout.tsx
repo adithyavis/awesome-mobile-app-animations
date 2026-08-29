@@ -1,4 +1,5 @@
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { KeyboardProvider } from 'react-native-keyboard-controller';
 import { Stack } from 'expo-router';
 import { Image, StyleSheet, Text, View } from 'react-native';
 import GooglePhotosLogo from '../GooglePhotos/components/GooglePhotosLogo';
@@ -6,132 +7,154 @@ import GooglePhotosLogo from '../GooglePhotos/components/GooglePhotosLogo';
 export default function RootLayout() {
   return (
     <GestureHandlerRootView style={styles.gestureHandlerRootView}>
-      <Stack
-        screenOptions={{
-          contentStyle: styles.content,
-          headerTransparent: true,
-        }}
-      >
-        <Stack.Screen
-          name="index"
-          options={{
-            title: 'Home',
-            headerShown: false,
+      <KeyboardProvider>
+        <Stack
+          screenOptions={{
+            contentStyle: styles.content,
+            headerTransparent: true,
           }}
-        />
-        <Stack.Screen
-          name="stocks-chart"
-          options={{
-            title: 'Stocks',
-            headerTitleStyle: { color: 'white' },
-          }}
-        />
-        <Stack.Screen
-          name="threads-pull-to-refresh"
-          options={{
-            title: 'Threads',
-            headerTitleStyle: { color: 'white' },
-          }}
-        />
-        <Stack.Screen
-          name="threads-spoiler-masking"
-          options={{
-            title: 'Threads Spoiler',
-            headerTitleStyle: { color: 'white' },
-          }}
-        />
-        <Stack.Screen
-          name="duolingo-drag-sort-words"
-          options={{
-            title: 'Duolingo',
-            headerTitle() {
-              return (
-                <View style={[styles.header]}>
-                  <Image
-                    source={require('../DuoLingoDragSortWords/assets/duolingo-icon.png')}
-                    style={styles.headerIcon}
-                  />
-                  <Text style={styles.headerTitle}>Duolingo</Text>
-                </View>
-              );
-            },
-            headerTitleStyle: { color: 'white' },
-          }}
-        />
-        <Stack.Screen
-          name="wolt-shop-loading"
-          options={{
-            title: 'Wolt',
-            headerTitle() {
-              return (
-                <View style={[styles.header]}>
-                  <Image
-                    source={require('../WoltShopLoading/assets/wolt-shop-loading.png')}
-                    style={styles.headerIcon}
-                  />
-                  <Text style={styles.headerTitle}>Wolt</Text>
-                </View>
-              );
-            },
-            contentStyle: { padding: 0 },
-          }}
-        />
-        <Stack.Screen
-          name="chatgpt-voice-profiles"
-          options={{
-            title: 'ChatGPT',
-            headerTitle() {
-              return (
-                <View style={[styles.header]}>
-                  <View style={styles.chatgptLogoContainer}>
+        >
+          <Stack.Screen
+            name="index"
+            options={{
+              title: 'Home',
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="stocks-chart"
+            options={{
+              title: 'Stocks',
+              headerTitleStyle: { color: 'white' },
+            }}
+          />
+          <Stack.Screen
+            name="threads-pull-to-refresh"
+            options={{
+              title: 'Threads',
+              headerTitleStyle: { color: 'white' },
+            }}
+          />
+          <Stack.Screen
+            name="threads-spoiler-masking"
+            options={{
+              title: 'Threads Spoiler',
+              headerTitleStyle: { color: 'white' },
+            }}
+          />
+          <Stack.Screen
+            name="duolingo-drag-sort-words"
+            options={{
+              title: 'Duolingo',
+              headerTitle() {
+                return (
+                  <View style={[styles.header]}>
                     <Image
-                      source={require('../ChatGPTVoiceProfiles/assets/ChatGPT_logo.png')}
-                      style={{ width: 28, height: 28 }}
+                      source={require('../DuoLingoDragSortWords/assets/duolingo-icon.png')}
+                      style={styles.headerIcon}
                     />
+                    <Text style={styles.headerTitle}>Duolingo</Text>
                   </View>
-                  <Text style={styles.headerTitle}>ChatGPT</Text>
-                </View>
-              );
-            },
-            contentStyle: { padding: 0 },
-          }}
-        />
-        <Stack.Screen
-          name="youtube-music-swipe-bg-transition"
-          options={{
-            title: 'Youtube Music',
-            headerTitle() {
-              return (
-                <View style={[styles.header]}>
-                  <Image
-                    source={require('../YoutubeMusicSwipeBgTransition/assets/youtube-music-logo.png')}
-                    style={styles.headerIcon}
-                  />
-                  <Text style={styles.headerTitle}>Youtube Music</Text>
-                </View>
-              );
-            },
-            contentStyle: { padding: 0 },
-          }}
-        />
-        <Stack.Screen
-          name="google-photos"
-          options={{
-            title: 'Google Photos',
-            headerTitle() {
-              return (
-                <View style={[styles.header]}>
-                  <View style={styles.googlePhotosLogoContainer}>
-                    <GooglePhotosLogo size={18} />
+                );
+              },
+              headerTitleStyle: { color: 'white' },
+            }}
+          />
+          <Stack.Screen
+            name="wolt-shop-loading"
+            options={{
+              title: 'Wolt',
+              headerTitle() {
+                return (
+                  <View style={[styles.header]}>
+                    <Image
+                      source={require('../WoltShopLoading/assets/wolt-shop-loading.png')}
+                      style={styles.headerIcon}
+                    />
+                    <Text style={styles.headerTitle}>Wolt</Text>
                   </View>
-                  <Text style={styles.headerTitle}>Google Photos</Text>
-                </View>
-              );
-            },
-            contentStyle: { padding: 0 },
-          }}
-        />
-      </Stack>
+                );
+              },
+              contentStyle: { padding: 0 },
+            }}
+          />
+          <Stack.Screen
+            name="chatgpt-voice-profiles"
+            options={{
+              title: 'ChatGPT',
+              headerTitle() {
+                return (
+                  <View style={[styles.header]}>
+                    <View style={styles.chatgptLogoContainer}>
+                      <Image
+                        source={require('../ChatGPTVoiceProfiles/assets/ChatGPT_logo.png')}
+                        style={{ width: 28, height: 28 }}
+                      />
+                    </View>
+                    <Text style={styles.headerTitle}>ChatGPT</Text>
+                  </View>
+                );
+              },
+              contentStyle: { padding: 0 },
+            }}
+          />
+          <Stack.Screen
+            name="youtube-music-swipe-bg-transition"
+            options={{
+              title: 'Youtube Music',
+              headerTitle() {
+                return (
+                  <View style={[styles.header]}>
+                    <Image
+                      source={require('../YoutubeMusicSwipeBgTransition/assets/youtube-music-logo.png')}
+                      style={styles.headerIcon}
+                    />
+                    <Text style={styles.headerTitle}>Youtube Music</Text>
+                  </View>
+                );
+              },
+              contentStyle: { padding: 0 },
+            }}
+          />
+          <Stack.Screen
+            name="google-photos"
+            options={{
+              title: 'Google Photos',
+              headerTitle() {
+                return (
+                  <View style={[styles.header]}>
+                    <View style={styles.googlePhotosLogoContainer}>
+                      <GooglePhotosLogo size={18} />
+                    </View>
+                    <Text style={styles.headerTitle}>Google Photos</Text>
+                  </View>
+                );
+              },
+              contentStyle: { padding: 0 },
+            }}
+          />
+          <Stack.Screen
+            name="chatgpt-camera"
+            options={{
+              title: 'ChatGPT Camera',
+              headerTitle() {
+                return (
+                  <View style={[styles.header]}>
+                    <View style={styles.chatgptLogoContainer}>
+                      <Image
+                        source={require('../ChatGPTVoiceProfiles/assets/ChatGPT_logo.png')}
+                        style={{ width: 28, height: 28 }}
+                      />
+                    </View>
+                    <Text style={styles.headerTitle}>ChatGPT</Text>
+                  </View>
+                );
+              },
+              contentStyle: { padding: 0 },
+            }}
+          />
+        </Stack>
+      </KeyboardProvider>
     </GestureHandlerRootView>
   );
 }

@@ -21,6 +21,7 @@ This project leverages the following libraries to create smooth, performant anim
 
 | App               | Description                    | Video                                                  | Source                                                                                                          |
 | ----------------- | ------------------------------ | ------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------- |
+| **ChatGPT**       | Camera                         | [YouTube](https://youtu.be/SljlQiKVvnw)                | [Code](https://github.com/adithyavis/awesome-mobile-app-animations/tree/main/src/ChatGPTCamera)                 |
 | **Wolt**          | Frost creep like image loading | [YouTube](https://youtu.be/cZBs7ur75Dk)                | [Code](https://github.com/adithyavis/awesome-mobile-app-animations/tree/main/src/WoltShopLoading)               |
 | **Duolingo**      | Drag sort words                | [YouTube](https://youtu.be/-KX4BDmUdN8)                | [Code](https://github.com/adithyavis/awesome-mobile-app-animations/tree/main/src/DuoLingoDragSortWords)         |
 | **Threads**       | Pull-to-refresh                | [YouTube](https://youtu.be/9Zi5wbfT-Mk)                | [Code](https://github.com/adithyavis/awesome-mobile-app-animations/tree/main/src/ThreadsPullToRefresh)          |

@@ -12,6 +12,18 @@ export default function HomeScreen() {
       <View style={styles.buttonsContainer}>
         <Pressable
           style={styles.button}
+          onPress={() => router.push('/chatgpt-camera')}
+        >
+          <View style={styles.chatgptIcon}>
+            <Image
+              source={require('../ChatGPTVoiceProfiles/assets/ChatGPT_logo.png')}
+              style={{ width: 28, height: 28 }}
+            />
+          </View>
+          <Text style={styles.buttonText}>ChatGPT: Camera</Text>
+        </Pressable>
+        <Pressable
+          style={styles.button}
           onPress={() => router.push('/google-photos')}
         >
           <View style={styles.googlePhotosIcon}>
