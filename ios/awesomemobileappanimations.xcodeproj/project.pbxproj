@@ -340,6 +340,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = awesomemobileappanimations/awesomemobileappanimations.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DFSD8L4426;
 				ENABLE_BITCODE = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -360,7 +361,7 @@
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.anonymous.awesome-mobile-app-animations";
-				PRODUCT_NAME = "awesomemobileappanimations";
+				PRODUCT_NAME = awesomemobileappanimations;
 				SWIFT_OBJC_BRIDGING_HEADER = "awesomemobileappanimations/awesomemobileappanimations-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -377,6 +378,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = awesomemobileappanimations/awesomemobileappanimations.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DFSD8L4426;
 				INFOPLIST_FILE = awesomemobileappanimations/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
@@ -392,7 +394,7 @@
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_RELEASE";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.anonymous.awesome-mobile-app-animations";
-				PRODUCT_NAME = "awesomemobileappanimations";
+				PRODUCT_NAME = awesomemobileappanimations;
 				SWIFT_OBJC_BRIDGING_HEADER = "awesomemobileappanimations/awesomemobileappanimations-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

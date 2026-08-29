@@ -38,6 +38,8 @@
     <string>12.0</string>
     <key>LSRequiresIPhoneOS</key>
     <true/>
+    <key>NSCameraUsageDescription</key>
+    <string>Allow awesome-mobile-app-animations to access your camera to show the camera preview.</string>
     <key>NSAppTransportSecurity</key>
     <dict>
       <key>NSAllowsArbitraryLoads</key>
